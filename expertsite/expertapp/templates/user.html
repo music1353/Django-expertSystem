@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中藥材專家系統-使用者</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- inputStyle css -->
+    <link rel="stylesheet" href="static/inputStyle/css/component.css">
+    <link rel="stylesheet" href="static/inputStyle/css/demo.css">
+    <link rel="stylesheet" href="static/css/basic.css">
+    <link rel="stylesheet" href="static/css/animate.css">
+    <link rel="stylesheet" href="static/css/user.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="static/js/wow/wow.min.js"></script>
+    <script src="static/js/jq-easing/jquery.easing.min.js"></script>
+    <!-- inputStlye js -->
+    <script src="static/inputStyle/js/classie.js"></script>
+    <script src="static/js/user_page.js"></script>
+</head>
+
+<body>
+    <!-- nav-toggle start -->
+    <a id="nav-toggle"><span></span></a>
+    <div class="animated fadeInDown" id="nav_bar">
+        <a class="list_database">資料庫</a>
+        <a href="index" class="back_to_index">回到首頁</a>
+    </div>
+    <!-- nav-toggle end -->
+
+    <!-- list_database Modal start -->
+    <div class="ui tiny modal">
+        <div class="header">資料庫</div>
+        <div class="scrolling content" id="list_database">
+        </div>
+    </div>
+    <!-- list_database Modal end -->
+
+    <!-- up_down start -->
+    <div id="up_down">
+        <a href="#user_symptom_section" id='user_symptom_section_circle'><i class="circle icon"></i></a>
+        <a href="#predict_section" id='predict_section_circle'><i class="circle thin icon"></i></a>
+    </div>
+    <!-- up_down end -->
+
+    <!-- user_symptom_section start -->
+    <section id="user_symptom_section">
+        <div class="user_symptom_title">
+            <h1>請輸入您的症狀</h1>
+        </div>
+        <div class="user_symptom_main">
+            <span class="input input--jiro">
+				<textarea class="input__field input__field--jiro" name="user_symptom" id="user_symptom" cols="40" rows="3"></textarea>
+				<label class="input__label input__label--jiro" for="add_medicine_name">
+				    <span class="input__label-content input__label-content--jiro">症狀</span>
+            </label>
+            </span>
+        </div>
+        <a href="#predict_section" class="large ui green button" id="btn_send_symptom">送出</a>
+    </section>
+    <!-- user_symptom_section end -->
+
+    <!-- predict_section start -->
+    <section id="predict_section">
+        <div class="predict_title">
+            <h1>最終診斷</h1>
+        </div>
+        <div id="predict"></div>
+        <div id="re_callback"></div>
+        <div id="last_none"></div>
+    </section>
+    <!-- predict_section end -->
+
+    <!-- inputStyle script start -->
+    <script>
+        (function() {
+            // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+            if (!String.prototype.trim) {
+                (function() {
+                    // Make sure we trim BOM and NBSP
+                    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                    String.prototype.trim = function() {
+                        return this.replace(rtrim, '');
+                    };
+                })();
+            }
+
+            [].slice.call(document.querySelectorAll('textarea.input__field')).forEach(function(inputEl) {
+                // in case the input is already filled..
+                if (inputEl.value.trim() !== '') {
+                    classie.add(inputEl.parentNode, 'input--filled');
+                }
+
+                // events:
+                inputEl.addEventListener('focus', onInputFocus);
+                inputEl.addEventListener('blur', onInputBlur);
+            });
+
+            function onInputFocus(ev) {
+                classie.add(ev.target.parentNode, 'input--filled');
+            }
+
+            function onInputBlur(ev) {
+                if (ev.target.value.trim() === '') {
+                    classie.remove(ev.target.parentNode, 'input--filled');
+                }
+            }
+        })();
+
+    </script>
+    <!-- inputStyle script end -->
+
+</body>
+
+</html>

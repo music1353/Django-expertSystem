@@ -1,0 +1,200 @@
+html,
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* nav-toggle */
+
+#nav-toggle {
+    color: white;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    z-index: 10;
+}
+
+#nav-toggle {
+    cursor: pointer;
+    padding: 10px 35px 16px 0px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: white;
+    position: absolute;
+    display: block;
+    content: '';
+}
+
+#nav-toggle span:before {
+    top: -10px;
+}
+
+#nav-toggle span:after {
+    bottom: -10px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+    transition: all 500ms ease-in-out;
+}
+
+#nav-toggle.active span {
+    background-color: transparent;
+}
+
+#nav-toggle.active span:before,
+#nav-toggle.active span:after {
+    top: 0;
+}
+
+#nav-toggle.active span:before {
+    transform: rotate(45deg);
+}
+
+#nav-toggle.active span:after {
+    transform: rotate(-45deg);
+}
+
+/* nav-bar */
+
+#nav_bar {
+    position: fixed;
+    top: 100px;
+    left: 50px;
+    z-index: 10;
+}
+
+#nav_bar a {
+    color: white;
+    font-size: 20px;
+    display: block;
+}
+
+#nav_bar .list_database {
+    cursor: pointer;
+}
+
+#nav_bar .back_to_index {
+    margin-top: 30px;
+}
+
+/* list_database Modal  */
+
+.ui.tiny.modal > .header {
+    text-align: center;
+}
+
+.ui.tiny.modal > #list_database h4 {
+    text-align: center;
+}
+
+/* up_down */
+
+#up_down #user_symptom_section_circle i {
+    color: white;
+    font-size: 15px;
+    position: fixed;
+    bottom: 55%;
+    right: 5%;
+    z-index: 10;
+}
+
+#up_down #predict_section_circle i {
+    color: white;
+    font-size: 15px;
+    position: fixed;
+    bottom: 45%;
+    right: 5%;
+    z-index: 10;
+}
+
+
+/* user_symptom_section */
+
+#user_symptom_section {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #F7DC6F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#user_symptom_section .user_symptom_title {
+    color: black;
+    position: absolute;
+    top: 15%;
+}
+
+#user_symptom_section .user_symptom_title h1 {
+    font-size: 40px;
+}
+
+#user_symptom_section .user_symptom_main span {
+    font-size: 25px;
+}
+
+#user_symptom_section #btn_send_symptom {
+    position: absolute;
+    bottom: 15%;
+}
+
+#user_symptom_section #user_symptom {
+    resize: none;
+}
+
+/* predict_section */
+
+#predict_section {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #E8DAEF;
+    position: relative;
+}
+
+#predict_section .predict_title {
+    color: black;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 15%;
+}
+
+#predict_section .predict_title h1 {
+    font-size: 40px;
+}
+
+#predict_section #predict p {
+    width: 100%;
+    text-align: center;
+    color: forestgreen;
+    font-size: 20px;
+    position: absolute;
+    top: 35%;
+}
+
+#predict_section #re_callback {
+    font-size: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+}
+
+
+#predict_section #last_none p {
+    font-size: 30px;
+    padding-bottom: 100px;
+}

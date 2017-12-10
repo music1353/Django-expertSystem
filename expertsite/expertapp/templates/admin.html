@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中藥材專家系統-管理員</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- inputStyle css -->
+    <link rel="stylesheet" href="static/inputStyle/css/component.css">
+    <link rel="stylesheet" href="static/inputStyle/css/demo.css">
+    <!-- iziToast css -->
+    <link rel="stylesheet" href="static/iziToast/css/iziToast.min.css">
+    <link rel="stylesheet" href="static/css/basic.css">
+    <link rel="stylesheet" href="static/css/animate.css">
+    <link rel="stylesheet" href="static/css/admin.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="static/js/wow/wow.min.js"></script>
+    <script src="static/js/jq-easing/jquery.easing.min.js"></script>
+    <!-- inputStlye js -->
+    <script src="static/inputStyle/js/classie.js"></script>
+    <!-- iziToast js -->
+    <script src="static/iziToast/js/iziToast.min.js"></script>
+    <script src="static/js/admin_page.js"></script>
+</head>
+
+<body>
+    <!-- nav-toggle start -->
+    <a id="nav-toggle"><span></span></a>
+    <div class="animated fadeInDown" id="nav_bar">
+        <a class="list_database">資料庫</a>
+        <a href="index" class="back_to_index">回到首頁</a>
+    </div>
+    <!-- nav-toggle end -->
+
+    <!-- list_database Modal start -->
+    <div class="ui tiny modal">
+        <div class="header">資料庫</div>
+        <div class="scrolling content" id="list_database">
+        </div>
+    </div>
+    <!-- list_database Modal end -->
+
+    <!-- up_down start -->
+    <div id="up_down">
+        <a href="#add_section" id='add_section_circle'><i class="circle icon"></i></a>
+        <a href="#del_section" id='del_section_circle'><i class="circle thin icon"></i></a>
+    </div>
+    <!-- up_down end -->
+
+    <!-- add_section start -->
+    <section id="add_section">
+        <div class="add_title">
+            <h1>新增中藥材</h1>
+        </div>
+        <div class="add_main">
+            <span class="input input--jiro">
+				<input class="input__field input__field--jiro" type="text" name='add_medicine_name' id="add_medicine_name" />
+				<label class="input__label input__label--jiro" for="add_medicine_name">
+				    <span class="input__label-content input__label-content--jiro">中藥材名稱</span>
+            </label>
+            </span>
+
+            <br>
+
+            <span class="input input--jiro">
+				<input class="input__field input__field--jiro" type="text" name='add_medicine_symptom' id="add_medicine_symptom" />
+				<label class="input__label input__label--jiro" for="add_medicine_symptom">
+				    <span class="input__label-content input__label-content--jiro">適用症狀</span>
+            </label>
+            </span>
+        </div>
+        <button class="large ui blue button" id="btn_add">確定新增</button>
+        <p class='add_complete' style='display: none'></p>
+        <p class="add_status" style='display: none'></p>
+
+    </section>
+    <!-- add_section end  -->
+
+    <!-- del_section start -->
+    <section id="del_section">
+        <div class="del_title">
+            <h1>刪除中藥材</h1>
+        </div>
+        <div class="del_main">
+            <span class="input input--jiro">
+				<input class="input__field input__field--jiro" type="text" name='del_medicine_name' id="del_medicine_name" />
+				<label class="input__label input__label--jiro" for="del_medicine_name">
+				    <span class="input__label-content input__label-content--jiro">中藥材名稱</span>
+            </label>
+            </span>
+        </div>
+        <button class="large ui red button" id="btn_del">確定刪除</button>
+        <p class='del_complete' style='display: none'></p>
+        <p class="del_status" style='display: none'></p>
+    </section>
+    <!-- del_section end -->
+    
+    <!-- inputStyle script start -->
+    <script>
+        (function() {
+            // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+            if (!String.prototype.trim) {
+                (function() {
+                    // Make sure we trim BOM and NBSP
+                    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                    String.prototype.trim = function() {
+                        return this.replace(rtrim, '');
+                    };
+                })();
+            }
+
+            [].slice.call(document.querySelectorAll('input.input__field')).forEach(function(inputEl) {
+                // in case the input is already filled..
+                if (inputEl.value.trim() !== '') {
+                    classie.add(inputEl.parentNode, 'input--filled');
+                }
+
+                // events:
+                inputEl.addEventListener('focus', onInputFocus);
+                inputEl.addEventListener('blur', onInputBlur);
+            });
+
+            function onInputFocus(ev) {
+                classie.add(ev.target.parentNode, 'input--filled');
+            }
+
+            function onInputBlur(ev) {
+                if (ev.target.value.trim() === '') {
+                    classie.remove(ev.target.parentNode, 'input--filled');
+                }
+            }
+        })();
+    </script>
+    <!-- inputStyle script end -->
+</body>
+
+</html>

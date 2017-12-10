@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中藥材專家系統</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/basic.css">
+    <link rel="stylesheet" href="static/css/animate.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="static/js/wow/wow.min.js"></script>
+    <script src="static/js/jq-easing/jquery.easing.min.js"></script>
+    <script src="static/js/index_page.js"></script>
+</head>
+
+<body>
+    <!-- nav-toggle start -->
+    <a id="nav-toggle"><span></span></a>
+    <div class="animated fadeInDown" id="nav_bar">
+        <a class="list_database">資料庫</a>
+        <a href="index" class="back_to_index">回到首頁</a>
+    </div>
+    <!-- nav-toggle end -->
+
+    <!-- list_database Modal start -->
+    <div class="ui tiny modal">
+        <div class="header">資料庫</div>
+        <div class="scrolling content" id="list_database">   
+        </div>
+    </div>
+    <!-- list_database Modal end -->
+
+    <!-- face_section start -->
+    <section id="face_section">
+        <div class="face_title">
+            <h1>中藥材專家系統</h1>
+        </div>
+        <div class="get_start">
+            <a href="#index_section" class="large ui inverted button">GET START</a>
+        </div>
+    </section>
+    <!-- face_section end -->
+
+    <!-- index_section start -->
+    <section id="index_section">
+        <div class="index_page">
+            <div class="index_title">
+                <h1>請問您的身份是</h1>
+            </div>
+            <div class="index_buttons">
+                <a href="admin" class="large ui inverted button" id="admin">管理員</a>
+                <a href="user" class="large ui inverted button" id="user">使用者</a>
+            </div>
+        </div>
+    </section>
+    <!-- index_section end -->
+
+</body>
+
+</html>

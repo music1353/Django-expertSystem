@@ -1,0 +1,162 @@
+html,
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* nav-toggle */
+
+#nav-toggle {
+    color: white;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    z-index: 10;
+}
+
+#nav-toggle {
+    cursor: pointer;
+    padding: 10px 35px 16px 0px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: white;
+    position: absolute;
+    display: block;
+    content: '';
+}
+
+#nav-toggle span:before {
+    top: -10px;
+}
+
+#nav-toggle span:after {
+    bottom: -10px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+    transition: all 500ms ease-in-out;
+}
+
+#nav-toggle.active span {
+    background-color: transparent;
+}
+
+#nav-toggle.active span:before,
+#nav-toggle.active span:after {
+    top: 0;
+}
+
+#nav-toggle.active span:before {
+    transform: rotate(45deg);
+}
+
+#nav-toggle.active span:after {
+    transform: rotate(-45deg);
+}
+
+/* nav-bar */
+#nav_bar {
+    position: fixed;
+    top: 100px;
+    left: 50px;
+    z-index: 10;
+}
+
+#nav_bar a{
+    color: white;
+    font-size: 20px;
+    display: block;
+}
+
+#nav_bar .list_database {
+    cursor: pointer;
+}
+
+#nav_bar .back_to_index {
+    margin-top: 30px;
+}
+
+/* list_database Modal  */
+.ui.tiny.modal>.header {
+    text-align: center;
+}
+
+.ui.tiny.modal>#list_database h4 {
+    text-align: center;
+}
+
+
+/* face_section */
+
+#face_section {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #2ecc71;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative
+}
+
+#face_section .face_title {
+    color: white;
+    position: absolute;
+    top: 30%;
+}
+
+#face_section .face_title h1 {
+    font-size: 55px;
+}
+
+#face_section .get_start {
+    position: absolute;
+    bottom: 200px;
+}
+
+/* index_section */
+
+#index_section {
+    width: 100%;
+    height: 100%;
+    background: #3498db;
+    position: relative;
+}
+
+#index_section .index_title {
+    color: white;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 33%;
+}
+
+#index_section .index_title h1 {
+    font-size: 50px;
+}
+
+#index_section .index_buttons {
+    width: 100%;
+    position: absolute;
+    bottom: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#index_section #admin {
+    margin-right: 50px;
+}
+
+#index_section #user {
+    margin-left: 50px;
+}

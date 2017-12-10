@@ -1,0 +1,181 @@
+html,
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* nav-toggle */
+
+#nav-toggle {
+    color: white;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    z-index: 10;
+}
+
+#nav-toggle {
+    cursor: pointer;
+    padding: 10px 35px 16px 0px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: white;
+    position: absolute;
+    display: block;
+    content: '';
+}
+
+#nav-toggle span:before {
+    top: -10px;
+}
+
+#nav-toggle span:after {
+    bottom: -10px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+    transition: all 500ms ease-in-out;
+}
+
+#nav-toggle.active span {
+    background-color: transparent;
+}
+
+#nav-toggle.active span:before,
+#nav-toggle.active span:after {
+    top: 0;
+}
+
+#nav-toggle.active span:before {
+    transform: rotate(45deg);
+}
+
+#nav-toggle.active span:after {
+    transform: rotate(-45deg);
+}
+
+/* nav-bar */
+
+#nav_bar {
+    position: fixed;
+    top: 100px;
+    left: 50px;
+    z-index: 10;
+}
+
+#nav_bar a {
+    color: white;
+    font-size: 20px;
+    display: block;
+}
+
+#nav_bar .list_database {
+    cursor: pointer;
+}
+
+#nav_bar .back_to_index {
+    margin-top: 30px;
+}
+
+/* list_database Modal  */
+
+.ui.tiny.modal > .header {
+    text-align: center;
+}
+
+.ui.tiny.modal > #list_database h4 {
+    text-align: center;
+}
+
+/* up_down */
+
+#up_down #add_section_circle i {
+    color: white;
+    font-size: 15px;
+    position: fixed;
+    bottom: 55%;
+    right: 5%;
+    z-index: 10;
+}
+
+#up_down #del_section_circle i {
+    color: white;
+    font-size: 15px;
+    position: fixed;
+    bottom: 45%;
+    right: 5%;
+    z-index: 10;
+}
+
+/* add_section */
+
+#add_section {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #F8C471;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#add_section .add_title {
+    color: black;
+    position: absolute;
+    top: 15%;
+}
+
+#add_section .add_title h1 {
+    font-size: 40px;
+}
+
+#add_section .add_main span {
+    font-size: 25px;
+}
+
+#add_section #btn_add {
+    position: absolute;
+    bottom: 15%;
+}
+
+/* del_section */
+
+#del_section {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #D0D3D4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#del_section .del_title {
+    color: black;
+    position: absolute;
+    top: 15%;
+}
+
+#del_section .del_title h1 {
+    font-size: 40px;
+}
+
+#del_section .del_main span {
+    font-size: 25px;
+}
+
+#del_section #btn_del {
+    position: absolute;
+    bottom: 15%;
+}
