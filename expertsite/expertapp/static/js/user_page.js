@@ -2,10 +2,16 @@ $(function () {
 
     $("#btn_send_symptom").click(function () {
         var user_symptom = $('#user_symptom').val();
+        console.log(user_symptom)
 
-        // 清空#predict及#re_callback
+        // 清空 最後診斷所有資訊
         $('#predict').empty();
         $('#re_callback').empty();
+        $('#last_none').empty();
+
+        // 更改右側圓點
+        $('#up_down>#user_symptom_section_circle>i').attr('class', 'circle thin icon');
+        $('#up_down>#predict_section_circle>i').attr('class', 'circle icon');
 
         if (user_symptom != "") {
             $.ajax({
@@ -19,7 +25,8 @@ $(function () {
                     // 清空使用者原本輸入
                     $('#user_symptom').val('');
 
-                    $('#predict').append("<p class='animated fadeInUp'>您的症狀為 " + data['predict_sym'] + "</p>")
+                    $('#predict').append("<p class='animated fadeInUp'>診斷症狀為 " + data['predict_sym'] + "</p>");
+
 
                     if (data['predict'] == 'none') {
                         $('#re_callback').append('<p>沒有這種中藥材呦ＱＱ</p>');
@@ -53,10 +60,6 @@ $(function () {
 
                                         count++;
                                         hidden = "style='display: none;'"
-
-                                        // 更改右側圓點
-                                        $('#up_down>#user_symptom_section_circle>i').attr('class', 'circle thin icon');
-                                        $('#up_down>#predict_section_circle>i').attr('class', 'circle icon');
 
                                         console.log(comparison_symptom[key_sym][key]);
                                         console.log('推薦您' + predict[key_sym] + '中藥材！');

@@ -4,27 +4,25 @@ from django.views.decorators.csrf import csrf_exempt
 from expertEngine import herbologySystem as hs
 import os
 import json
-
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from expertsite.settings import PROJECT_ROOT
+import jieba_tw
+from symptomNLP import symptomNLP
 
-# def index(request):
-#
-#     back = {}
-#     post = request.POST # 拿所有post
-#
-#     id = post.get('id') #身份
-#
-#     path = os.path.join(PROJECT_ROOT, 'knowledgeBase.json')
-#
-#     if id == 'user':
-#         p = hs.person(path)
-#         database = p.read_database()
-#
-#         back['identify'] = 'user'
-#         back['database'] = database
-#
-#     return render(request, 'index.html', back)
+# 載入 STNLP
+model_path = os.path.join(PROJECT_ROOT, 'train_models/1218_1064_model.h5')
+token_path = os.path.join(PROJECT_ROOT, 'train_models/1218_1064_token.pickle')
+predict_symptom_dict = {0: '火大', 1: '咳嗽', 2: '高血壓', 3: '胃潰瘍', 4: '痰', 5: '風濕', 6: '筋骨痛',
+                        7: '胃痛', 8: '腎臟病', 9: '發炎', 10: '腸胃不順', 11: '水腫', 12: '糖尿病',
+                        13: '肝炎', 14: '中暑'}
+
+stnlp = symptomNLP.STNLP(model_path, token_path, predict_symptom_dict)
+model = stnlp.load_train_model()
+token = stnlp.load_train_token()
+
+# prerun model
+STNLP_prerun = stnlp.predict(token, model, '預運行模組')
+
 
 def index(request):
     return render(request, 'index.html')
@@ -67,23 +65,26 @@ def user_symptom_ajax(request):
         post = request.POST
         user_symptom = post.get('user_symptom')
 
-        predict = p.match(user_symptom)
+        # STNLP
+        STNLP_predict = stnlp.predict(token, model, user_symptom)
+
+        predict = p.match(STNLP_predict)
 
         if predict==[]:
-            back = {'predict_sym': user_symptom,
+            back = {'predict_sym': STNLP_predict,
                     'predict': 'none'}
 
             return JsonResponse(back)
 
         elif len(predict)==1:
-            back= {'predict_sym': user_symptom,
+            back= {'predict_sym': STNLP_predict,
                    'predict': predict }
 
             return JsonResponse(back)
 
         else:
-            comparison_symptom = p.get_differ(predict, user_symptom)
-            back = {'predict_sym': user_symptom,
+            comparison_symptom = p.get_differ(predict, STNLP_predict)
+            back = {'predict_sym': STNLP_predict,
                     'predict': predict,
                     'comparison_symptom': comparison_symptom }
 

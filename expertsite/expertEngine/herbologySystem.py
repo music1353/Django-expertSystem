@@ -44,7 +44,7 @@ class expertSystem(object):
 
     def get_differ(self, predict, symptom):
         database = self.read_database()
-        re_symptom = re.split(r"：|。|！|；|、|;|,|\?\s|;\s|,\s", symptom.replace(' ', ''))
+        # re_symptom = re.split(r"：|。|！|；|、|;|,|\?\s|;\s|,\s", symptom.replace(' ', ''))
 
         comparison_symptom = []
 
@@ -56,7 +56,7 @@ class expertSystem(object):
 
         # remove previous same symptom
         for item in comparison_symptom:
-            for sym in re_symptom:
+            for sym in symptom:
                 try:
                     item.remove(sym)
                 except:
@@ -180,19 +180,19 @@ class person(expertSystem):
     def match(self, symptom):
         predict = []  # 預測的medicine
         database = super().read_database()
-        re_symptom = list(re.split(r"：|。|！|；|、|;|,|\?\s|;\s|,\s", symptom.replace(' ', '')))
+        # re_symptom = list(re.split(r"：|。|！|；|、|;|,|\?\s|;\s|,\s", symptom.replace(' ', '')))
 
-        for re_sym in re_symptom:
+        for sym in symptom:
             for db in database:
-                if set(re_symptom).issubset(set(db['symptom'])) and len(re_symptom) == len(db['symptom']):
+                if set(symptom).issubset(set(db['symptom'])) and len(symptom) == len(db['symptom']):
                     predict.append(db['medicine'])
                     print('if')
                     break
 
         if (predict == []):
-            for re_sym in re_symptom:
+            for sym in symptom:
                 for db in database:
-                    if re_sym in db['symptom']:
+                    if sym in db['symptom']:
                         predict.append(db['medicine'])
                         print('elif')
 
