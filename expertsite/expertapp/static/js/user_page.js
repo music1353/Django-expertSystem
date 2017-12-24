@@ -83,7 +83,7 @@ $(function () {
                                 $(this).parent().hide();
                             } else {
                                 $(this).parent().hide();
-                                $('#last_none').append('<p class="animated fadeInUp">沒有這種中藥材呦ＱＱ</p>');
+                                $('#last_none').append('<p class="animated fadeInUp">您可能需要 '+predict+' 中藥材！</p>');
                                 console.log('沒了');
                             }
                         });

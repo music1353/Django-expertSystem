@@ -88,20 +88,10 @@ class expertSystem(object):
                 continue
             break
 
-    def initSystem(self):
-        del p
-
     def run(self):
         identify = input('請問您的身份是(person/doctor)：')
 
-        # TODO update init
-        if (identify == '初始化'):
-            p = person(self.database_path)
-            del p
-            p = person(self.database_path)
-            p.run()
-
-        elif (identify == 'person'):
+        if (identify == 'person'):
             p = person(self.database_path)
 
             p.list_database_symptom()
@@ -128,7 +118,6 @@ class expertSystem(object):
             elif int(intent) == 1:
                 medicine = input('請問要刪除的中藥材名稱是：')
                 d.del_knowledge(medicine)
-                # TODO update
         else:
             print('沒打對')
 

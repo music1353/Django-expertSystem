@@ -70,7 +70,7 @@ class STNLP:
             predict = model.predict_classes(pad_input_seq)
             predict_soft = model.predict(pad_input_seq) # 機率分布
     
-            # 如果沒超過某個機率不能列入 0.7, 0.8, 0.9
+            # 如果沒超過某個機率不採計
             if max(predict_soft[0])<0.8:
                 pass
             else:
